@@ -1,0 +1,47 @@
+package com.example.constraintsactivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        setContentView(R.layout.activity_main);
+
+        EditText nota1 = findViewById(R.id.editText_Nota1);
+        EditText nota2 = findViewById(R.id.editText_Nota2);
+
+        Button botao_calcular = findViewById(R.id.botao_calcular);
+
+        TextView resultado = findViewById(R.id.resultado);
+
+        botao_calcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String notainserida1 = nota1.getText().toString().trim();
+                String notainserida2 = nota2.getText().toString().trim();
+
+                float nota01_calculada = Float.parseFloat(notainserida1);
+                float nota02_calculada = Float.parseFloat(notainserida2);
+
+                double resultadoCalculo = (nota01_calculada * 0.4) + (nota02_calculada * 0.6);
+
+                resultado.setText("O resultado é "+ resultadoCalculo);
+            }
+        });
+
+    }
+}
