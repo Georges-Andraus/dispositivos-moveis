@@ -1,0 +1,45 @@
+package com.example.aula7;
+
+import android.os.Bundle;
+import android.widget.TextView;
+
+import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+public class TelaResultado extends AppCompatActivity {
+
+    private TextView resultado;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_tela_resultado);
+       inicializaTela();
+    }
+
+    private void inicializaTela() {
+        resultado = findViewById(R.id.Resultado);
+        int notaFinal = calculaNota();
+        if(notaFinal == 10){
+            resultado.setText("VoxÊ é Bom");
+        }
+        else resultado.setText("Nota 0");
+
+        calculaNota();
+    }
+
+    private int calculaNota() {
+        String resposta1 = getIntent().getStringExtra("chaveResposta");
+
+        if(resposta1.equals("C - Rio Branco"))
+            return 10;
+        else
+            return 0;
+    }
+
+}
